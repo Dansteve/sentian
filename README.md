@@ -227,15 +227,15 @@ Be patient, it might take a few seconds for the script to run. If all went well,
 Output
 Total number of adjectives =  6094
 Total number of nouns =  13180
+
 ```
 If your output looks the same, it means you have successfully completed this tutorial. Congratulations!
 
 Finished Code
-For our finished code. Our script looks like this:
+For our finished code. the link is:
 
-```
-[Link is ](https://github.com/Dansteve/sentian/blob/master/nlk/nlp_twitter.py)
-```
+[Link is ](https://github.com/Dansteve/sentian/blob/master/nlk/nlp_twitter.py) - nlp_twitter.py
+
 
 ## Deployment
 
