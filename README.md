@@ -205,10 +205,12 @@ for tweet in tweets_tagged:
             JJ_count += 1
         elif tag == 'NN':
             NN_count += 1
-         ```
+```
+
 After the two loops are complete, we should have the total count for adjectives and nouns in our corpus. To see how many adjectives and nouns our script found, we'll add print statements to the end of the script.
 
 nlp_twitter.py
+
 ```
 ...
 
@@ -233,8 +235,7 @@ If your output looks the same, it means you have successfully completed this tut
 
 Finished Code
 For our finished code. the link is:
-
-[Link is ](https://github.com/Dansteve/sentian/blob/master/nlk/nlp_twitter.py) - nlp_twitter.py
+[nlp_twitter.py](https://github.com/Dansteve/sentian/blob/master/nlk/nlp_twitter.py) - 
 
 
 ## Deployment
