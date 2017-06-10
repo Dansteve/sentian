@@ -1,13 +1,13 @@
-#file details- tokenized and tagged glo tweets
+# file details- tokenized and tagged glo tweets
 
-##stream tweets.py - Get tweets
+## stream tweets.py - Get tweets
 
-##glo.txt - save tweets
+## glo.txt - save tweets
 
-##display_stream_tweets.py - display gotten tweets
+## display_stream_tweets.py - display gotten tweets
 
-##tokenize_stream_tweets.py - tokenize stream tweet
+## tokenize_stream_tweets.py - tokenize stream tweet
 
-##tag_stream_tweets.py - tag tweet
+## tag_stream_tweets.py - tag tweet
 
-##nlp twitter.py - complete analysis
+## nlp twitter.py - complete analysis
