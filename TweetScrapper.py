@@ -2,9 +2,13 @@ from time import sleep
 from selenium import webdriver
 
 class TweetScrapper():
-	def __init__(self, url=None,useInfiniteScroll=True):
+	def __init__(self, url=None,useInfiniteScroll=True,browser="firefox",browserDriverPath="Path/to/driver"):
 		self.url = url
-		self.browser = webdriver.Firefox(executable_path='/home/otse/Downloads/geckodriver')
+		
+		# Download Chrome Driver or geckodriver for firefox to use selenium
+		# 
+		self.browser = webdriver.FireFox(executable_path=browserDriverPath) \
+				if browser=="firefox" else webdriver.Chrome(executable_path=browerDriverPath)
 		self.useInfiniteScroll = useInfiniteScroll
 
 		self.browser.get(self.url)
@@ -28,7 +32,7 @@ class TweetScrapper():
 			file.write("[tweet: "+tweet.text+"],\n")
 
 if __name__ == '__main__':
-	scrapper = TweetScrapper(url="https://twitter.com/search?src=typd&q=gloworld%20glocare")
+	scrapper = TweetScrapper(url="https://twitter.com/search?src=typd&q=gloworld%20glocare",browserDriverPath="path/to/driver")
 	scrapper.infiniteScroller()
 	scrapper.gatherTweetsFromPage(tweetCssClass="tweet-txt")
 	scrapper.saveTweets(fileName="tweet.txt")
