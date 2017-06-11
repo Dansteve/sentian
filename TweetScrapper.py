@@ -45,6 +45,7 @@ class TweetScrapper():
 			file.write("{\"tweet\":\""+tweet_text+"\"},")
 
 		file.write("]}")
+		file.close()
 
 
 if __name__ == '__main__':
