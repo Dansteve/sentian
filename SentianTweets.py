@@ -11,6 +11,13 @@ class TweetPreprocessor():
 	def __init__(self)
 		pass
 
+	def tokenize(self):
+		pass
+
+	def removeStopWords(self):
+		pass
+
+
 class TweetFeatureExtractor():
 	def __init__(self):
 		pass
@@ -19,6 +26,6 @@ class TweetTrainer():
 	def __init__(self):
 		pass
 
-class TweetClass():
+class TweetClassifier():
 	def __init__(self):
 		pass
