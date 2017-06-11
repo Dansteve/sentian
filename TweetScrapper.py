@@ -1,6 +1,7 @@
 from urllib import parse
 from time import sleep
 from selenium import webdriver
+import re
 
 # Download Chrome Driver or geckodriver for firefox to use selenium
 # and use the file path as the browserDriverPath parameter value.
@@ -21,9 +22,9 @@ class TweetScrapper():
 
 		self.browser.get(self.url)
 
-	def infiniteScroller(self,scrollNO=2000,seconds=3):
+	def infiniteScroller(self,numberOfScrolls=2000,seconds=3):
 		if self.useInfiniteScroll:
-			for _ in range(scrollNo):
+			for _ in range(numberOfScrolls):
 				self.browser.execute_script("window.scrollTo(0,document.body.scrollHeight);")
 				sleep(seconds)
 		else:
@@ -33,14 +34,24 @@ class TweetScrapper():
 		self.tweets = self.browser.find_elements_by_class_name(str(tweetCssClass))
 
 
-	def saveTweets(self,fileName=None):
+	def saveTweetsAsJson(self,fileName=None):
 		file = open(str(fileName),"w")
 
+		file.write("{\"glo\":[")
+
 		for tweet in self.tweets:
-			file.write("[tweet: "+tweet.text+"],\n")
+			tweet_text = re.sub(r"\s\s+"," ",tweet.text)
+			tweet_text = tweet_text.replace("\"","\'").replace("\n"," ").replace("\n"," ")
+			file.write("{\"tweet\":\""+tweet_text+"\"},")
+
+		file.write("]}")
+
 
 if __name__ == '__main__':
+	# IMPORTANT: Download chromedriver(Google Chrome) or geckodriver(Firefox) to use selenium
+	# 	     and use the file path of the driver as the browserDriverPath parameter value.
 	scrapper = TweetScrapper(query="gloworld glocare", browserDriverPath="/home/otse/Downloads/geckodriver")
+	
 	scrapper.infiniteScroller()
-	scrapper.gatherTweetsFromPage(tweetCssClass="tweet-txt")
-	scrapper.saveTweets(fileName="tweet.txt")
+	scrapper.gatherTweetsFromPage(tweetCssClass="tweet-text")
+	scrapper.saveTweetsAsJson(fileName="glotweets.json")
