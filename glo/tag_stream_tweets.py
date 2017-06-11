@@ -5,7 +5,7 @@ from nltk.tag import pos_tag_sents
 import os
 cwd = os.getcwd()
 
-data = cwd+'\\glo.txt'
+data = cwd+'\\glo.json'
 
 tweets_tokens = twitter_samples.tokenized(data)
 
