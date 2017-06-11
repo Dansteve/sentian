@@ -3,8 +3,17 @@
 import twitter
 import nltk
 
-class TweetCollector():
+class TweetScrapper():
 	def __init__(self):
+		pass
+		
+	def infiniteScroller(self):
+		pass
+
+	def gatherTweetsFromPage(self,tweetCssClass=None):
+		pass
+
+	def saveTweets(self,fileName=None):
 		pass
 
 class TweetPreprocessor():
