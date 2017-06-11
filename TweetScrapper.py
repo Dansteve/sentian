@@ -1,10 +1,22 @@
+from urllib import parse
 from time import sleep
 from selenium import webdriver
 
+# Download Chrome Driver or geckodriver for firefox to use selenium
+# and use the file path as the browserDriverPath parameter value.
+
 class TweetScrapper():
-	def __init__(self, url=None,useInfiniteScroll=True):
-		self.url = url
-		self.browser = webdriver.Firefox(executable_path='/home/otse/Downloads/geckodriver')
+	def __init__(self,url= "https://twitter.com/search?", query=None, useInfiniteScroll=True,
+		     browser="firefox",browserDriverPath="Path/to/driver"):
+		
+		self.query = query or ""
+		query_dict = {"q":self.query}
+		encoded_query = parse.urlencode(query_dict)
+		
+		self.url = url + encoded_query
+		
+		self.browser = webdriver.Firefox(executable_path=browserDriverPath) \
+				if browser=="firefox" else webdriver.Chrome(executable_path=browerDriverPath)
 		self.useInfiniteScroll = useInfiniteScroll
 
 		self.browser.get(self.url)
@@ -28,7 +40,7 @@ class TweetScrapper():
 			file.write("[tweet: "+tweet.text+"],\n")
 
 if __name__ == '__main__':
-	scrapper = TweetScrapper(url="https://twitter.com/search?src=typd&q=gloworld%20glocare")
+	scrapper = TweetScrapper(query="gloworld glocare", browserDriverPath="/home/otse/Downloads/geckodriver")
 	scrapper.infiniteScroller()
 	scrapper.gatherTweetsFromPage(tweetCssClass="tweet-txt")
 	scrapper.saveTweets(fileName="tweet.txt")

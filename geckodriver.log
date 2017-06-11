@@ -92,3 +92,15 @@ JavaScript error: resource://gre/modules/PerformanceWatcher-content.js, line 49:
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1497205085613	geckodriver	INFO	Listening on 127.0.0.1:51755
+1497205086957	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.UWBOPWjBAC5R
+1497205086960	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497205086987	geckodriver::marionette	INFO	Connecting to Marionette on localhost:41441
+1497205102997	Marionette	INFO	Listening on port 41441
+1497205103527	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0039,name=PCompositorBridge::Msg_PTextureConstructor) Channel error: cannot send/recv
+
+IPDL protocol error: constructor for actor failed
+[Child 4993] ###!!! ABORT: IPDL error [PCompositorBridgeChild]: "constructor for actor failed". abort()ing as a result.: file /build/firefox-IKSm1A/firefox-53.0.3+build1/ipc/glue/ProtocolUtils.cpp, line 302
+[Child 4993] ###!!! ABORT: IPDL error [PCompositorBridgeChild]: "constructor for actor failed". abort()ing as a result.: file /build/firefox-IKSm1A/firefox-53.0.3+build1/ipc/glue/ProtocolUtils.cpp, line 302
