@@ -41,7 +41,7 @@ class TweetScrapper():
 
 		for tweet in self.tweets:
 			tweet_text = re.sub(r"\s\s+"," ",tweet.text)
-			tweet_text = tweet_text.replace("\"","\'").replace("\n"," ").replace("\n"," ")
+			tweet_text = tweet_text.replace("\"","\'").replace("\n"," ").replace("\r"," ")
 			file.write("{\"tweet\":\""+tweet_text+"\"},")
 
 		file.write("]}")

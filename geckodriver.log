@@ -380,3 +380,9 @@ IPDL protocol error: Handler returned error code!
 1497209317821	Marionette	INFO	Listening on port 41673
 1497209319621	Marionette	WARN	TLS certificate errors will be ignored for this session
 1497209396301	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: timeout
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
