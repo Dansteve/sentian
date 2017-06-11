@@ -1,3 +1,4 @@
+from urllib import parse
 from time import sleep
 from selenium import webdriver
 
