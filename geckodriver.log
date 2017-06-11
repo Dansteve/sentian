@@ -1,0 +1,28 @@
+1497191852296	geckodriver	INFO	Listening on 127.0.0.1:49125
+1497191853640	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.wgy5t9VpYojA
+1497191853644	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497191853681	geckodriver::marionette	INFO	Connecting to Marionette on localhost:42381
+1497191871987	Marionette	INFO	Listening on port 42381
+1497191873001	Marionette	WARN	TLS certificate errors will be ignored for this session
+1497192046641	geckodriver	INFO	Listening on 127.0.0.1:51077
+1497192046939	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.grPJjtoRO08I
+1497192046943	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497192046957	geckodriver::marionette	INFO	Connecting to Marionette on localhost:32961
+1497192058040	Marionette	INFO	Listening on port 32961
+1497192058606	Marionette	WARN	TLS certificate errors will be ignored for this session
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1497192291049	geckodriver	INFO	Listening on 127.0.0.1:50541
+1497192291351	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.ykqt6TSayxiq
+1497192291354	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497192291366	geckodriver::marionette	INFO	Connecting to Marionette on localhost:42205
+1497192302604	Marionette	INFO	Listening on port 42205
+1497192303217	Marionette	WARN	TLS certificate errors will be ignored for this session
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
