@@ -3,22 +3,22 @@
 import twitter
 import nltk
 
-class SentianTweets():
+class TweetCollector():
 	def __init__(self):
 		pass
 
-	def collect(self):
+class TweetPreprocessor():
+	def __init__(self)
 		pass
 
-	def preprocess(self):
+class TweetFeatureExtractor():
+	def __init__(self):
 		pass
 
-	def extractFeatures(self):
+class TweetTrainer():
+	def __init__(self):
 		pass
 
-	def train(self):
+class TweetClass():
+	def __init__(self):
 		pass
-
-	def classify(self):
-		pass
-
