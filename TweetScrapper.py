@@ -1,23 +1,30 @@
+import re
+
 from urllib import parse
 from time import sleep
 from selenium import webdriver
-import re
 
 # Download Chrome Driver or geckodriver for firefox to use selenium
 # and use the file path as the browserDriverPath parameter value.
 
 class TweetScrapper():
-	def __init__(self,url= "https://twitter.com/search?", query=None, useInfiniteScroll=True,
-		     browser="firefox",browserDriverPath="Path/to/driver"):
+	def __init__(self,url= "https://twitter.com/search?", query=None, tweetCssClass="tweet-text",
+				useInfiniteScroll=True,
+		     	browser="firefox",browserDriverPath=None):
 		
 		self.query = query or ""
 		query_dict = {"q":self.query}
 		encoded_query = parse.urlencode(query_dict)
 		
 		self.url = url + encoded_query
+		self.tweetCssClass = tweetCssClass
 		
-		self.browser = webdriver.Firefox(executable_path=browserDriverPath) \
-				if browser=="firefox" else webdriver.Chrome(executable_path=browerDriverPath)
+		if browserDriverPath != None:
+			self.browser = webdriver.Firefox(executable_path=browserDriverPath) \
+					if browser=="firefox" else webdriver.Chrome(executable_path=browerDriverPath)
+		else:
+			self.browser = webdriver.Firefox() if browser=="firefox" else webdriver.Chrome()
+
 		self.useInfiniteScroll = useInfiniteScroll
 
 		self.browser.get(self.url)
@@ -30,16 +37,21 @@ class TweetScrapper():
 		else:
 			print("infinite Scroll disabled on this instance")
 
-	def gatherTweetsFromPage(self,tweetCssClass=None):
-		self.tweets = self.browser.find_elements_by_class_name(str(tweetCssClass))
+	def getTweetsFromPage(self):
+		tweets = self.browser.find_elements_by_class_name(self.tweetCssClass)
+
+		return tweets
 
 
 	def saveTweetsAsJson(self,fileName=None):
+
+		tweets = self.getTweetsFromPage()
+
 		file = open(str(fileName),"w")
 
 		file.write("{\"glo\":[")
 
-		for tweet in self.tweets:
+		for tweet in tweets:
 			tweet_text = re.sub(r"\s\s+"," ",tweet.text)
 			tweet_text = tweet_text.replace("\"","\'").replace("\n"," ").replace("\r"," ")
 			file.write("{\"tweet\":\""+tweet_text+"\"},")
@@ -54,5 +66,4 @@ if __name__ == '__main__':
 	scrapper = TweetScrapper(query="gloworld glocare", browserDriverPath="/home/otse/Downloads/geckodriver")
 	
 	scrapper.infiniteScroller()
-	scrapper.gatherTweetsFromPage(tweetCssClass="tweet-text")
 	scrapper.saveTweetsAsJson(fileName="glotweets.json")
