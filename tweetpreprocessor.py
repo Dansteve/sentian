@@ -4,6 +4,7 @@ import string
 
 from nltk.tokenize import TweetTokenizer
 from nltk.corpus import stopwords
+from nltk import pos_tag
 
 
 class TweetPreprocessor(TweetTokenizer):
@@ -32,7 +33,7 @@ class TweetPreprocessor(TweetTokenizer):
 		for tweet in self.raw_tweets:
 			self.tokenized_tweets.append(super().tokenize(tweet))
 		
-		#return self.tokenized_tweets
+		return self.tokenized_tweets
 
 	def removeStopwordsAndPunctuations(self):
 		self.filtered_tweets = []
@@ -47,9 +48,20 @@ class TweetPreprocessor(TweetTokenizer):
 
 			self.filtered_tweets.append(filtered_tweet)
 
+		return self.filtered_tweets
+
+	def tagTweets(self):
+		self.tagged_tweets = []
+
+		for tweet in self.filtered_tweets:
+			self.tagged_tweets.append(pos_tag(tweet))
+
+		return self.tagged_tweets
+
+
 
 if __name__ == '__main__':
 	tp = TweetPreprocessor()
 	tp.tokenize()
 	tp.removeStopwordsAndPunctuations()
-	print(tp.filtered_tweets)
+	print(tp.tagTweets())
