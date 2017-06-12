@@ -1,16 +1,15 @@
-import nltk
+from nltk.tokenize import TweetTokenizer
 import json
 import re
 
-class TweetPreprocessor():
-<<<<<<< HEAD:TweetPreprocessor.py
+class TweetPreprocessor(TweetTokenizer):
 	def __init__(self,filepath="glotweets.json"):
+		super().__init__(strip_handles=True, reduce_len=True)
 		self.filepath = filepath
 
-		with open("filepath", "r") as tweetfile:
+		with open(self.filepath, "r") as tweetfile:
 			self.tweets = json.load(tweetfile)
 
-=======
-	def __init__(self):
->>>>>>> aba0be816f9ca164443a0ab6caae0e74ee8bc92d:tweetpreprocessor.py
-		
+	def tokenize(self,text):
+		return super().tokenize(text)
+
