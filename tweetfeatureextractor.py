@@ -2,22 +2,20 @@ from tweetpreprocessor import TweetPreprocessor
 from sklearn.feature_extraction import DictVectorizer
 
 
-class featureExtraction(DictVectorizer):
+class featureExtractor(DictVectorizer):
 
-	def __init__(self,tag_tp):
-		self.tag_tweets = tag_tp
+	def __init__(self,tagged_tweets):
+		super().__init__()
+		self.tagged_tweets = tagged_tweets
 
 	def pos_vectorized(self):
-    self.vec = DictVectorizer()
-		self.featureExtract = self.vec.fit_transform(self.tag_tweets)
-		return self.self.featureExtract
+		self.featureExtract = super().fit_transform(self.tagged_tweets)
+		return self.featureExtract
 
 if __name__ == '__main__':
     tp = TweetPreprocessor()
-	  tp.tokenize()
-	  tp.removeStopwordsAndPunctuations()
-    tag_tp = tp.tagged_tweets
-    fE = featureExtraction()
-    pro = fE.pos_vectorized(tag_tp)
+    tagged_tweets = tp.tagged_tweets
+    fe = featureExtractor()
+    pro = fe.pos_vectorized(tagged_tweet)
     print(pro)
     
