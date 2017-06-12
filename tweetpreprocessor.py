@@ -18,6 +18,9 @@ class TweetPreprocessor(TweetTokenizer):
 		self.raw_tweets = []
 
 		self.__loadTweetsFromFile()
+		self.__tokenize()
+		self.__removeStopwordsAndPunctuations()
+		self.__tagTweets()
 
 
 	def __loadTweetsFromFile(self):
@@ -28,29 +31,31 @@ class TweetPreprocessor(TweetTokenizer):
 		for i in range(number_of_tweets):
 			self.raw_tweets.append(tweets["glo"][i]["tweet"])
 
-	def tokenize(self):
+	def __tokenize(self):
 		self.tokenized_tweets = []
 		for tweet in self.raw_tweets:
 			self.tokenized_tweets.append(super().tokenize(tweet))
 		
 		return self.tokenized_tweets
 
-	def removeStopwordsAndPunctuations(self):
+	def __removeStopwordsAndPunctuations(self):
 		self.filtered_tweets = []
+
+		#this creates a regex pattern to check if a token is a punctuation or a series of punctuations
 		pattern = re.compile("[{0}{1}]+".format(re.escape(self.punctuation),"\s"))
 
 		for tweet in self.tokenized_tweets:
 			filtered_tweet = []
 			for token in tweet:
 				if token not in self.stopwords:
-					if pattern.fullmatch(token) == None:
+					if pattern.fullmatch(token) == None: # filters punctuations 
 						filtered_tweet.append(token)
 
 			self.filtered_tweets.append(filtered_tweet)
 
 		return self.filtered_tweets
 
-	def tagTweets(self):
+	def __tagTweets(self):
 		self.tagged_tweets = []
 
 		for tweet in self.filtered_tweets:
@@ -58,10 +63,3 @@ class TweetPreprocessor(TweetTokenizer):
 
 		return self.tagged_tweets
 
-
-
-if __name__ == '__main__':
-	tp = TweetPreprocessor()
-	tp.tokenize()
-	tp.removeStopwordsAndPunctuations()
-	print(tp.tagTweets())
