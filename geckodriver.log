@@ -1,0 +1,30 @@
+1497217419649	geckodriver	INFO	Listening on 127.0.0.1:50183
+1497217420924	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.eqpQGiZ7ECKV
+1497217420928	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497217420942	geckodriver::marionette	INFO	Connecting to Marionette on localhost:38579
+1497217432793	Marionette	INFO	Listening on port 38579
+1497217433273	Marionette	WARN	TLS certificate errors will be ignored for this session
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
+1497218257692	geckodriver	INFO	Listening on 127.0.0.1:54097
+1497218258030	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.bQ6VXKfVdqQT
+1497218258033	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497218258044	geckodriver::marionette	INFO	Connecting to Marionette on localhost:45975
+1497218269367	Marionette	INFO	Listening on port 45975
+1497218270012	Marionette	WARN	TLS certificate errors will be ignored for this session
+1497218294669	geckodriver	INFO	Listening on 127.0.0.1:45507
+1497218294990	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.4ZikQ0i4xuSa
+1497218294993	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args []
+1497218295006	geckodriver::marionette	INFO	Connecting to Marionette on localhost:38809
+1497218307060	Marionette	INFO	Listening on port 38809
+1497218307631	Marionette	WARN	TLS certificate errors will be ignored for this session
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
