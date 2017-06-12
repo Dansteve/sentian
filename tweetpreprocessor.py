@@ -1,22 +1,32 @@
-from nltk.tokenize import TweetTokenizer
 import json
 import re
 
-<<<<<<< HEAD
+from nltk.tokenize import TweetTokenizer
+from nltk.corpus import stopwords
+
+
 class TweetPreprocessor(TweetTokenizer):
-=======
-class TweetPreprocessor():
->>>>>>> 7a626168d76eaf1d1fe00e7a05171e23e6f7d4aa
+
 	def __init__(self,filepath="glotweets.json"):
 		super().__init__(strip_handles=True, reduce_len=True)
+
 		self.filepath = filepath
+		self.stopword_list = stopwords.words("english")
+		self.list_of_tweets = []
 
+		self.__loadTweetsFromFile()
+
+
+	def __loadTweetsFromFile(self):
 		with open(self.filepath, "r") as tweetfile:
-			self.tweets = json.load(tweetfile)
+			tweets = json.load(tweetfile)
 
-<<<<<<< HEAD
+		number_of_tweets = len(tweets["glo"])
+		for i in range(number_of_tweets):
+			self.list_of_tweets.append(tweets["glo"][i]["tweet"])
+
 	def tokenize(self,text):
 		return super().tokenize(text)
 
-=======
->>>>>>> 7a626168d76eaf1d1fe00e7a05171e23e6f7d4aa
+	def removeStopWords(self):
+		pass
