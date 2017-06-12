@@ -13,6 +13,7 @@ class TweetPreprocessor(TweetTokenizer):
 
 		self.filepath = filepath
 		self.stopwords = set(stopwords.words("english"))
+		self.punctuation = string.punctuation
 		self.raw_tweets = []
 
 		self.__loadTweetsFromFile()
@@ -31,14 +32,24 @@ class TweetPreprocessor(TweetTokenizer):
 		for tweet in self.raw_tweets:
 			self.tokenized_tweets.append(super().tokenize(tweet))
 		
-		return self.tokenized_tweets
+		#return self.tokenized_tweets
 
 	def removeStopwordsAndPunctuations(self):
 		self.filtered_tweets = []
+		pattern = re.compile("[{0}{1}]+".format(re.escape(self.punctuation),"\s"))
+
 		for tweet in self.tokenized_tweets:
 			filtered_tweet = []
 			for token in tweet:
-				if token not in self.stopwords and token not in string.punctuation:
-					filtered_tweet.append(token)
+				if token not in self.stopwords:
+					if pattern.fullmatch(token) == None:
+						filtered_tweet.append(token)
+
 			self.filtered_tweets.append(filtered_tweet)
 
+
+if __name__ == '__main__':
+	tp = TweetPreprocessor()
+	tp.tokenize()
+	tp.removeStopwordsAndPunctuations()
+	print(tp.filtered_tweets)
