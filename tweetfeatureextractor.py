@@ -15,7 +15,7 @@ class featureExtractor(DictVectorizer):
 if __name__ == '__main__':
     tp = TweetPreprocessor()
     tagged_tweets = tp.tagged_tweets
-    fe = featureExtractor()
-    pro = fe.pos_vectorized(tagged_tweet)
+    fe = featureExtractor(tagged_tweet)
+    pro = fe.pos_vectorized()
     print(pro)
     
